@@ -2,7 +2,7 @@ services:
   - type: web
     name: fishing-habitat-api
     env: python
-    rootDir: apps/api
+    rootDir: api
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
@@ -15,7 +15,7 @@ services:
   - type: web
     name: fishing-habitat-web
     env: node
-    rootDir: apps/web
+    rootDir: web
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
