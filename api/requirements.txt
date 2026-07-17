@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+httpx
+python-multipart
+pandas
+numpy
+scikit-learn
+xgboost
+shap
+torch
+torchvision
+pillow
+joblib
+sqlalchemy
+bcrypt
+python-jose[cryptography]
+email-validator

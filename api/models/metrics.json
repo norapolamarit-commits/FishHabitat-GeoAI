@@ -1,0 +1,183 @@
+{
+  "data_basis": "proxy_label",
+  "target_description": "Literature-derived Habitat Suitability Index for skipjack tuna (Katsuwonus pelamis), NOT real CPUE/catch data.",
+  "n_total_cells": 163,
+  "n_train": 130,
+  "n_test": 33,
+  "suitability_cutoff": 1.0,
+  "data_caveats": [
+    "Small N (~150-200 grid cells) \u2014 a real limitation of assembling this from public no-auth data sources at 0.5deg resolution, not a purpose-built dataset.",
+    "Spatial block train/test split used (not random) to reduce leakage from spatially autocorrelated neighboring cells.",
+    "Target is a literature-derived proxy label, not validated fishing outcomes.",
+    "The HSI distribution in this region skews high (most ocean cells in the Gulf of Thailand/Andaman Sea are warm, shallow shelf water favorable per the formula) \u2014 a genuine regional finding, not a modeling artifact. This makes any fixed suitability cutoff produce a lopsided confusion matrix; ROC-AUC is a more informative classification metric here than precision/recall at one threshold."
+  ],
+  "models": {
+    "base_a_xgboost_env_image": {
+      "rmse": 0.014092887796726721,
+      "mae": 0.005894713822185629,
+      "r2": 0.9876971006186023
+    },
+    "base_b_ridge_env_temporal": {
+      "rmse": 0.14569282583114754,
+      "mae": 0.07260754814812923,
+      "r2": -0.314873030124305
+    },
+    "stacked_ensemble": {
+      "rmse": 0.013932445131828786,
+      "mae": 0.005820687247705337,
+      "r2": 0.987975634564109
+    }
+  },
+  "classification_derived": {
+    "confusion_matrix": [
+      [
+        0,
+        22
+      ],
+      [
+        0,
+        11
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "not_suitable",
+      "suitable"
+    ],
+    "precision": 0.3333333333333333,
+    "recall": 1.0,
+    "f1": 0.5,
+    "roc_auc": 0.9297520661157024,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        0.045454545454545456,
+        0.045454545454545456,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.13636363636363635,
+        0.13636363636363635,
+        0.18181818181818182,
+        0.18181818181818182,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.09090909090909091,
+        0.36363636363636365,
+        0.36363636363636365,
+        0.5454545454545454,
+        0.5454545454545454,
+        0.6363636363636364,
+        0.6363636363636364,
+        0.9090909090909091,
+        0.9090909090909091,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "shap_feature_importance": [
+    {
+      "feature": "chl_mg_m3",
+      "mean_abs_shap": 0.05547935515642166
+    },
+    {
+      "feature": "depth_m",
+      "mean_abs_shap": 0.047956641763448715
+    },
+    {
+      "feature": "sst_c",
+      "mean_abs_shap": 0.00033616923610679805
+    },
+    {
+      "feature": "img_1",
+      "mean_abs_shap": 7.235427619889379e-05
+    },
+    {
+      "feature": "wind_speed_kmh",
+      "mean_abs_shap": 5.925880032009445e-05
+    },
+    {
+      "feature": "salinity_psu",
+      "mean_abs_shap": 3.109327735728584e-05
+    },
+    {
+      "feature": "wind_direction_deg",
+      "mean_abs_shap": 4.575835646392079e-06
+    },
+    {
+      "feature": "wave_height_m",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "current_velocity_kmh",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "current_direction_deg",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_0",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_2",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_3",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_4",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_5",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_6",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_7",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_8",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_9",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_10",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_11",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_12",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_13",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_14",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "img_15",
+      "mean_abs_shap": 0.0
+    }
+  ]
+}
