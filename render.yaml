@@ -21,3 +21,5 @@ services:
     envVars:
       - key: NEXT_PUBLIC_API_URL
         sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
